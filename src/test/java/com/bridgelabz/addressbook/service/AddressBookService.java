@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class AddressBookService {
@@ -73,5 +73,30 @@ public class AddressBookService {
         List<AddressBookDto> actualListOfAddressBook = addressBookService.getAll();
         assertEquals(2, actualListOfAddressBook.size());
         assertEquals(addressBookEntities, actualListOfAddressBook);
+    }
+
+    @Test
+    void givenAddressBookDto_whenCalledAddAddressBookMethod_shouldReturnSuccessMessage() {
+
+        AddressBookDto addressBookDto = new AddressBookDto();
+        addressBookDto.setName("Damini");
+        addressBookDto.setAddress("Mahasamund");
+        addressBookDto.setCity("Raipur");
+        addressBookDto.setState("Chhattishgarh");
+        addressBookDto.setPhoneNumber("1234567890");
+        addressBookDto.setZip("123456");
+
+        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        addressBookEntity.setName("Damini");
+        addressBookEntity.setAddress("Mahasamund");
+        addressBookEntity.setCity("Raipur");
+        addressBookEntity.setState("Chhattishgarh");
+        addressBookEntity.setPhoneNumber("1234567890");
+        addressBookEntity.setZip("123456");
+
+        when(modelMapper.map(addressBookDto, AddressBookEntity.class)).thenReturn(addressBookEntity);
+        String  actualStringMessage = addressBookService.addAddressBook(addressBookDto);
+        assertEquals("Employee Added Successfully", actualStringMessage);
+        verify(addressBookRepository,times(1)).save(addressBookEntity);
     }
 }
