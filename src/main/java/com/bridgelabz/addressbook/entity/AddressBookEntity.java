@@ -18,7 +18,7 @@ public class AddressBookEntity {
     private String city;
     private String state;
     private String phoneNumber;
-    private int zip;
+    private String zip;
     @CreationTimestamp
     private LocalDateTime createdOn;
     @UpdateTimestamp

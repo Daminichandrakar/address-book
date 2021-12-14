@@ -9,5 +9,5 @@ public class AddressBookDto {
     private String city;
     private String state;
     private String phoneNumber;
-    private int zip;
+    private String zip;
 }
