@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -68,6 +69,22 @@ public class AddressBookControllerTest {
         addressBookDto.setZip("123456");
         when(addressBookService.addAddressBook(addressBookDto)).thenReturn(successString);
         String actualResponseString = addressBookController.addEmployee(addressBookDto);
+        assertEquals(successString, actualResponseString);
+    }
+
+    @Test
+    void givenAddressBookDto_whenCalledUpdateAddressBookMethod_shouldReturnSuccessMessage() {
+        String successString = "AddressBook Update Successfully";
+        int id = 1;
+        AddressBookDto addressBookDto = new AddressBookDto();
+        addressBookDto.setName("Damini");
+        addressBookDto.setAddress("Mahasamund");
+        addressBookDto.setCity("Raipur");
+        addressBookDto.setState("Chhattishgarh");
+        addressBookDto.setPhoneNumber("1234567890");
+        addressBookDto.setZip("123456");
+        when(addressBookService.updateAddressBook(id,addressBookDto)).thenReturn(successString);
+        String actualResponseString = addressBookController.update(id,addressBookDto);
         assertEquals(successString, actualResponseString);
     }
 
