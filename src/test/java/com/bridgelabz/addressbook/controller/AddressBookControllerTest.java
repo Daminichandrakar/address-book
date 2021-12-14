@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbook.controller;
 
 import com.bridgelabz.addressbook.dto.AddressBookDto;
+import com.bridgelabz.addressbook.entity.AddressBookEntity;
 import com.bridgelabz.addressbook.service.AddressBookService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -88,4 +89,12 @@ public class AddressBookControllerTest {
         assertEquals(successString, actualResponseString);
     }
 
+    @Test
+    void givenId_whenCalledDeleteAddressBookMethod_shouldReturnSuccessMessage() {
+        String successString = "AddressBook Delete Successfully";
+        int id = 1;
+        when(addressBookService.deleteAddressBook(id)).thenReturn(successString);
+        String actualResponseString = addressBookController.delete(1);
+        assertEquals(successString, actualResponseString);
+    }
 }

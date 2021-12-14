@@ -1,5 +1,6 @@
 package com.bridgelabz.addressbook.entity;
 
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "adressbook")
+@Data
 public class AddressBookEntity {
 
     @Id
