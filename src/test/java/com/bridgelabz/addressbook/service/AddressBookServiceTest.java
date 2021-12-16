@@ -105,7 +105,7 @@ public class AddressBookServiceTest {
     }
 
     @Test
-    void givenIdAndAddressDto_whenUpdateAddessBookMethodCalled_shouldUpdateAddessBookDetailsAndReturnSuccessMessage() {
+    void givenIdAndAddressDto_whenUpdateAddressBookMethodCalled_shouldUpdateAddressBookDetailsAndReturnSuccessMessage() {
         int id = 1;
         AddressBookDto addressBookDto = new AddressBookDto();
         addressBookDto.setName("Damini");
@@ -137,7 +137,7 @@ public class AddressBookServiceTest {
     }
 
     @Test
-    void givenIdAndEmployeeDto_whenUpdateMethodIsCalled_IfIdNotFound_shouldThrowExceptionMessage() {
+    void givenIdAndAddressBookDto_whenUpdateMethodIsCalled_ifIdNotFound_shouldThrowExceptionMessage() {
         int id = 1;
         AddressBookDto addressBookDto = new AddressBookDto();
         addressBookDto.setName("Damini");
@@ -151,4 +151,23 @@ public class AddressBookServiceTest {
         assertThrows(AddressBookCustomException.class, () -> addressBookService.
                 updateAddressBook(id, addressBookDto));
     }
+
+    @Test
+    void givenId_whenDeleteAddressBookMethodIsCalledWithAnId_shouldDeleteTheDataOfThatId() {
+        int id = 1;
+        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        addressBookEntity.setId(1);
+        addressBookEntity.setName("Damini");
+        addressBookEntity.setAddress("Mahasamund");
+        addressBookEntity.setCity("Raipur");
+        addressBookEntity.setState("Chhattishgarh");
+        addressBookEntity.setPhoneNumber("1234567890");
+        addressBookEntity.setZip("123456");
+
+        when(addressBookRepository.findById(id)).thenReturn(Optional.of(addressBookEntity));
+        String actualMessage = addressBookService.deleteAddressBook(id);
+        assertEquals("AddressBook Deleted Successfully", actualMessage);
+        verify(addressBookRepository, times(1)).delete(addressBookEntity);
+    }
+
 }
