@@ -66,4 +66,15 @@ public class AddressBookControllerIT {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    void deleteAddressBookTest() throws Exception {
+        when(addressBookService.deleteAddressBook(1)).thenReturn("success");
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/addressbook/delete/1")
+                        .content("{\"name\": \"Damini\",\"address\": \"Mahasamund\",\"city\": \"Raipur\"," +
+                                "\"state\": \"Chhattishgarh\",\"phoneNumber\": \"1234567890\",\"zip\": \"123456\"}")
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk());
+    }
+
 }
