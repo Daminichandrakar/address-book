@@ -8,8 +8,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "adressbook")
 @Data
+@Table(name = "address_book")
 public class AddressBookEntity {
 
     @Id
