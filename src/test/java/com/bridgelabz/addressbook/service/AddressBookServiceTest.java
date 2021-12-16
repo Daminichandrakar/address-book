@@ -170,4 +170,20 @@ public class AddressBookServiceTest {
         verify(addressBookRepository, times(1)).delete(addressBookEntity);
     }
 
+    @Test
+    void givenId_whenDeleteEmployeeMethodIsCalled_IfIdNotFound_shouldThrowExceptionMessage() {
+        int id = 1;
+        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        addressBookEntity.setId(1);
+        addressBookEntity.setName("Damini");
+        addressBookEntity.setAddress("Mahasamund");
+        addressBookEntity.setCity("Raipur");
+        addressBookEntity.setState("Chhattishgarh");
+        addressBookEntity.setPhoneNumber("1234567890");
+        addressBookEntity.setZip("123456");
+        when(addressBookRepository.findById(id)).thenReturn(Optional.empty());
+        assertThrows(AddressBookCustomException.class, () -> addressBookService.deleteAddressBook(id));
+    }
+
+
 }
