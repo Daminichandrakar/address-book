@@ -12,8 +12,6 @@ import java.util.List;
 @RequestMapping(value = "/addressbook")
 public class AddressBookController {
 
-    public String welcomeMessage = "Success, Welcome to Address book app";
-
     @Autowired
     private AddressBookService addressBookService;
 

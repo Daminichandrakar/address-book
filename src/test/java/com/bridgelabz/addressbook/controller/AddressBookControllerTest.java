@@ -21,7 +21,6 @@ public class AddressBookControllerTest {
 
     @InjectMocks
     private AddressBookController addressBookController;
-
     @Mock
     private AddressBookService addressBookService;
 

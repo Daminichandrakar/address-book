@@ -184,6 +184,4 @@ public class AddressBookServiceTest {
         when(addressBookRepository.findById(id)).thenReturn(Optional.empty());
         assertThrows(AddressBookCustomException.class, () -> addressBookService.deleteAddressBook(id));
     }
-
-
 }
