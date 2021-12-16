@@ -33,8 +33,8 @@ public class AddressBookController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public String update(@PathVariable(value = "id") int id, @Valid @RequestBody AddressBookDto atmDto) {
-        return addressBookService.updateAddressBook(id, atmDto);
+    public String update(@PathVariable(value = "id") int id, @Valid @RequestBody AddressBookDto addressBookDto) {
+        return addressBookService.updateAddressBook(id, addressBookDto);
     }
 
     @DeleteMapping("/delete/{id}")
