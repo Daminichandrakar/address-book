@@ -3,6 +3,7 @@ package com.bridgelabz.addressbook.service;
 import com.bridgelabz.addressbook.builder.AddressBuilder;
 import com.bridgelabz.addressbook.dto.AddressBookDto;
 import com.bridgelabz.addressbook.entity.AddressBookEntity;
+import com.bridgelabz.addressbook.exception.AddressBookCustomException;
 import com.bridgelabz.addressbook.repository.AddressBookRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -89,6 +91,7 @@ public class AddressBookServiceTest {
         addressBookDto.setZip("123456");
 
         AddressBookEntity addressBookEntity = new AddressBookEntity();
+        addressBookEntity.setId(1);
         addressBookEntity.setName("Damini");
         addressBookEntity.setAddress("Mahasamund");
         addressBookEntity.setCity("Raipur");
@@ -113,6 +116,7 @@ public class AddressBookServiceTest {
         addressBookDto.setZip("123456");
 
         AddressBookEntity addressBookEntity = new AddressBookEntity();
+        addressBookEntity.setId(1);
         addressBookEntity.setName("Damini");
         addressBookEntity.setAddress("Mahasamund");
         addressBookEntity.setCity("Raipur");
@@ -130,5 +134,21 @@ public class AddressBookServiceTest {
         verify(addressBookRepository, times(1)).save(addressBookEntity);
         assertEquals("Employee Updated Successfully", actualSuccessMessage);
         assertEquals(addressBookDto.getName(), addressBookEntity.getName());
+    }
+
+    @Test
+    void givenIdAndEmployeeDto_whenUpdateMethodIsCalled_IfIdNotFound_shouldThrowExceptionMessage() {
+        int id = 1;
+        AddressBookDto addressBookDto = new AddressBookDto();
+        addressBookDto.setName("Damini");
+        addressBookDto.setAddress("Mahasamund");
+        addressBookDto.setCity("Raipur");
+        addressBookDto.setState("Chhattishgarh");
+        addressBookDto.setPhoneNumber("1234567890");
+        addressBookDto.setZip("123456");
+
+        when(addressBookRepository.findById(id)).thenReturn(Optional.empty());
+        assertThrows(AddressBookCustomException.class, () -> addressBookService.
+                updateAddressBook(id, addressBookDto));
     }
 }
