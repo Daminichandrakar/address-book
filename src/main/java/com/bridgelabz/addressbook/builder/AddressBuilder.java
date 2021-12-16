@@ -4,8 +4,9 @@ import com.bridgelabz.addressbook.dto.AddressBookDto;
 import com.bridgelabz.addressbook.entity.AddressBookEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
+@Component
 public class AddressBuilder {
     private ModelMapper modelMapper = new ModelMapper();
 

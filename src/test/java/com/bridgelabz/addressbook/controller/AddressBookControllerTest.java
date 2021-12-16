@@ -2,6 +2,7 @@ package com.bridgelabz.addressbook.controller;
 
 import com.bridgelabz.addressbook.dto.AddressBookDto;
 import com.bridgelabz.addressbook.service.AddressBookService;
+import com.bridgelabz.addressbook.service.AddressBookServiceTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -67,7 +68,7 @@ public class AddressBookControllerTest {
         addressBookDto.setPhoneNumber("1234567890");
         addressBookDto.setZip("123456");
         when(addressBookService.addAddressBook(addressBookDto)).thenReturn(successString);
-        String actualResponseString = addressBookController.addEmployee(addressBookDto);
+        String actualResponseString = addressBookController.add(addressBookDto);
         assertEquals(successString, actualResponseString);
     }
 

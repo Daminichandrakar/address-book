@@ -12,13 +12,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class AddressBookService {
+public class AddressBookServiceTest {
 
     @InjectMocks
     private AddressBookService addressBookService;
@@ -72,7 +74,7 @@ public class AddressBookService {
         when(modelMapper.map(addressBookEntities.get(1), AddressBookDto.class)).thenReturn(addressBookDto2);
         List<AddressBookDto> actualListOfAddressBook = addressBookService.getAll();
         assertEquals(2, actualListOfAddressBook.size());
-        assertEquals(addressBookEntities, actualListOfAddressBook);
+        assertEquals(addressBookDtoList, actualListOfAddressBook);
     }
 
     @Test
@@ -93,10 +95,40 @@ public class AddressBookService {
         addressBookEntity.setState("Chhattishgarh");
         addressBookEntity.setPhoneNumber("1234567890");
         addressBookEntity.setZip("123456");
-
         when(modelMapper.map(addressBookDto, AddressBookEntity.class)).thenReturn(addressBookEntity);
-        String  actualStringMessage = addressBookService.addAddressBook(addressBookDto);
-        assertEquals("Employee Added Successfully", actualStringMessage);
-        verify(addressBookRepository,times(1)).save(addressBookEntity);
+        String actualStringMessage = addressBookService.addAddressBook(addressBookDto);
+        assertEquals("AddressBook Added Successfully", actualStringMessage);
+        verify(addressBookRepository, times(1)).save(addressBookEntity);
+    }
+
+    @Test
+    void givenIdAndAddressDto_whenUpdateAddessBookMethodCalled_shouldUpdateAddessBookDetailsAndReturnSuccessMessage() {
+        int id = 1;
+        AddressBookDto addressBookDto = new AddressBookDto();
+        addressBookDto.setName("Damini");
+        addressBookDto.setAddress("Mahasamund");
+        addressBookDto.setCity("Raipur");
+        addressBookDto.setState("Chhattishgarh");
+        addressBookDto.setPhoneNumber("1234567890");
+        addressBookDto.setZip("123456");
+
+        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        addressBookEntity.setName("Damini");
+        addressBookEntity.setAddress("Mahasamund");
+        addressBookEntity.setCity("Raipur");
+        addressBookEntity.setState("Chhattishgarh");
+        addressBookEntity.setPhoneNumber("1234567890");
+        addressBookEntity.setZip("123456");
+
+        when(addressBookRepository.findById(id)).thenReturn(Optional.of(addressBookEntity));
+        addressBookEntity.setName(addressBookDto.getName());
+        addressBookEntity.setPhoneNumber(addressBookDto.getPhoneNumber());
+
+        when(addressBuilder.buildAddressEntity(addressBookDto, addressBookEntity)).
+                thenReturn(addressBookEntity);
+        String actualSuccessMessage = addressBookService.updateAddressBook(id, addressBookDto);
+        verify(addressBookRepository, times(1)).save(addressBookEntity);
+        assertEquals("Employee Updated Successfully", actualSuccessMessage);
+        assertEquals(addressBookDto.getName(), addressBookEntity.getName());
     }
 }

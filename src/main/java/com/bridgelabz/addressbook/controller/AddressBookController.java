@@ -3,9 +3,6 @@ package com.bridgelabz.addressbook.controller;
 import com.bridgelabz.addressbook.dto.AddressBookDto;
 import com.bridgelabz.addressbook.service.AddressBookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,7 +28,7 @@ public class AddressBookController {
     }
 
     @PostMapping(value = "/add")
-    public String addEmployee(@Valid @RequestBody AddressBookDto addressBookDto) {
+    public String add(@Valid @RequestBody AddressBookDto addressBookDto) {
         return addressBookService.addAddressBook(addressBookDto);
     }
 
@@ -44,6 +41,4 @@ public class AddressBookController {
     public String delete(@PathVariable int id) {
         return addressBookService.deleteAddressBook(id);
     }
-
-
 }
