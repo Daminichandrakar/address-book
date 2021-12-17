@@ -7,11 +7,17 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * Purpose : To invoke the entity class in addressBook application
+ *
+ * @author : DAMINI CHANDRAKAR
+ * @version : 0.0.1-SNAPSHOT
+ * @since : 15-12-2021
+*/
 @Entity
 @Data
 @Table(name = "address_book")
 public class AddressBookEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

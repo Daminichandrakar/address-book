@@ -21,6 +21,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
+/**
+ * Purpose : To invoke test cases for AddressBook service class.
+ *
+ * @author : DAMINI CHANDRAKAR
+ * @version : 0.0.1-SNAPSHOT
+ * @since : 15-12-2021
+ */
 @ExtendWith(MockitoExtension.class)
 public class AddressBookServiceTest {
 
@@ -132,7 +139,7 @@ public class AddressBookServiceTest {
                 thenReturn(addressBookEntity);
         String actualSuccessMessage = addressBookService.updateAddressBook(id, addressBookDto);
         verify(addressBookRepository, times(1)).save(addressBookEntity);
-        assertEquals("Employee Updated Successfully", actualSuccessMessage);
+        assertEquals("AddressBook Updated Successfully", actualSuccessMessage);
         assertEquals(addressBookDto.getName(), addressBookEntity.getName());
     }
 

@@ -16,6 +16,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+/**
+ * Purpose : To invoke test cases for AddressBook controller class.
+ *
+ * @author : DAMINI CHANDRAKAR
+ * @version : 0.0.1-SNAPSHOT
+ * @since : 15-12-2021
+ */
 @ExtendWith(MockitoExtension.class)
 public class AddressBookControllerTest {
 
