@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 @Data
 public class AddressBookDto {
 
-    @Pattern(regexp = "^[A-Z]{1}[a-z]{2,}" , message = "Name should be start with capital latter " +
+    @Pattern(regexp = "^[A-Z]{1}[a-z]{2,}", message = "Name should be start with capital latter " +
             "& should contain more then 3 character ")
     private String name;
     @Size(max = 100, message = " Address can have only upto 100 characters ")

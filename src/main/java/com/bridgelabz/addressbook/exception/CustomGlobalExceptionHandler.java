@@ -71,7 +71,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
     /**
      * Purpose : To handle method level exception
      *
-     * @param e : e used for AtmCustom Exception
+     * @param e : e used for addressBook Exception
      * @return : response entity of object type and status
      */
     @ExceptionHandler

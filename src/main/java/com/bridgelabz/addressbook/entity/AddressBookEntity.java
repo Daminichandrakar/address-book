@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * @author : DAMINI CHANDRAKAR
  * @version : 0.0.1-SNAPSHOT
  * @since : 15-12-2021
-*/
+ */
 @Entity
 @Data
 @Table(name = "address_book")

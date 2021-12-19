@@ -23,7 +23,7 @@ public class AddressBuilder {
     /**
      * Purpose : To convert addressBook dto into addressBook entity.
      *
-     * @param addressBookDto : addressBook dto which is to be converted.
+     * @param addressBookDto    : addressBook dto which is to be converted.
      * @param addressBookEntity : addressBook entity which will be overwritten.
      * @return employeePayroll : converted addressBook entity
      */

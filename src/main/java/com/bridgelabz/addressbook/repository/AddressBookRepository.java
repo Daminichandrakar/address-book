@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
  * @since : 15-12-2021
  */
 @Repository
-public interface AddressBookRepository extends JpaRepository<AddressBookEntity,Integer> {
+public interface AddressBookRepository extends JpaRepository<AddressBookEntity, Integer> {
 }

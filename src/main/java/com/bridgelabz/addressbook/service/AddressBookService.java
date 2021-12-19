@@ -37,10 +37,10 @@ public class AddressBookService {
 
     /**
      * Purpose : This method is used to add the addressBook details by using of
-     *           addressBookDto.
+     * addressBookDto.
      *
      * @param addressBookDto : takes the addressBook details as DTO to provide the
-     *                    repository for storing in database
+     *                       repository for storing in database
      * @return String : Success message for adding data into database.
      */
     public String addAddressBook(AddressBookDto addressBookDto) {
@@ -64,11 +64,11 @@ public class AddressBookService {
 
     /**
      * Purpose : This method is used to update the addressBook details by using their
-     *           respective addressBook id
+     * respective addressBook id
      *
-     * @param id : takes the addressBook id for updating that particular addressBook.
+     * @param id             : takes the addressBook id for updating that particular addressBook.
      * @param addressBookDto : takes the updated addressBook details as DTO
-     *                     and update in database
+     *                       and update in database
      * @return String : Success message for updating data into database.
      */
     public String updateAddressBook(int id, AddressBookDto addressBookDto) {

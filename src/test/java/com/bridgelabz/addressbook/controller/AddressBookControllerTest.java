@@ -89,8 +89,8 @@ public class AddressBookControllerTest {
         addressBookDto.setState("Chhattishgarh");
         addressBookDto.setPhoneNumber("1234567890");
         addressBookDto.setZip("123456");
-        when(addressBookService.updateAddressBook(id,addressBookDto)).thenReturn(successString);
-        String actualResponseString = addressBookController.update(id,addressBookDto);
+        when(addressBookService.updateAddressBook(id, addressBookDto)).thenReturn(successString);
+        String actualResponseString = addressBookController.update(id, addressBookDto);
         assertEquals(successString, actualResponseString);
     }
 

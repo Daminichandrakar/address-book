@@ -46,12 +46,12 @@ public class AddressBookBuilderTest {
         addressBookEntity.setState("Chhattishgarh");
         addressBookEntity.setPhoneNumber("1234567890");
         addressBookEntity.setZip("123456");
-        addressBookEntity = addressBuilder.buildAddressEntity(addressBookDto,addressBookEntity);
-        assertEquals(addressBookDto.getName(),addressBookEntity.getName());
-        assertEquals(addressBookDto.getAddress(),addressBookEntity.getAddress());
-        assertEquals(addressBookDto.getCity(),addressBookEntity.getCity());
-        assertEquals(addressBookDto.getState(),addressBookEntity.getState());
-        assertEquals(addressBookDto.getPhoneNumber(),addressBookEntity.getPhoneNumber());
-        assertEquals(addressBookDto.getZip(),addressBookEntity.getZip());
+        addressBookEntity = addressBuilder.buildAddressEntity(addressBookDto, addressBookEntity);
+        assertEquals(addressBookDto.getName(), addressBookEntity.getName());
+        assertEquals(addressBookDto.getAddress(), addressBookEntity.getAddress());
+        assertEquals(addressBookDto.getCity(), addressBookEntity.getCity());
+        assertEquals(addressBookDto.getState(), addressBookEntity.getState());
+        assertEquals(addressBookDto.getPhoneNumber(), addressBookEntity.getPhoneNumber());
+        assertEquals(addressBookDto.getZip(), addressBookEntity.getZip());
     }
 }
