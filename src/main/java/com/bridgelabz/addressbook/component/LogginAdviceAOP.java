@@ -9,7 +9,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
- * Purpose : To demonstrate log file in employee payroll application
+ * Purpose : To demonstrate log file in addressbook application
  *
  * @author : DAMINI CHANDRAKAR
  * @version : 0.0.1-SNAPSHOT
