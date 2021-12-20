@@ -1,17 +1,13 @@
 package com.bridgelabz.addressbook.builder;
 
 import com.bridgelabz.addressbook.dto.AddressBookDto;
-import com.bridgelabz.addressbook.entity.AddressBookEntity;
+import com.bridgelabz.addressbook.entity.AddressBook;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Date;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,7 +35,7 @@ public class AddressBookBuilderTest {
         addressBookDto.setState("Chhattishgarh");
         addressBookDto.setPhoneNumber("1234567890");
         addressBookDto.setZip("123456");
-        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        AddressBook addressBookEntity = new AddressBook();
         addressBookEntity.setName("Damini");
         addressBookEntity.setAddress("Mahasamund");
         addressBookEntity.setCity("Raipur");

@@ -48,7 +48,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
                 .getFieldErrors()
                 .stream().map(x -> x.getDefaultMessage()).collect(Collectors.toList());
         errors.put("errors", error);
-        return new ResponseEntity<Object>(errors, headers, status);
+        return new ResponseEntity<Object>(errors, headers, HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -65,7 +65,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(
             HttpRequestMethodNotSupportedException ex, HttpHeaders headers,
             HttpStatus status, WebRequest request) {
-        return new ResponseEntity<Object>("Please Check http Method Type", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Object>("Please Check http Method Type", HttpStatus.NOT_FOUND);
     }
 
     /**

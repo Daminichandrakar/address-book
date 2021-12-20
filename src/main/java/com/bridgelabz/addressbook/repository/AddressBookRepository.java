@@ -1,6 +1,6 @@
 package com.bridgelabz.addressbook.repository;
 
-import com.bridgelabz.addressbook.entity.AddressBookEntity;
+import com.bridgelabz.addressbook.entity.AddressBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
  * @since : 15-12-2021
  */
 @Repository
-public interface AddressBookRepository extends JpaRepository<AddressBookEntity, Integer> {
+public interface AddressBookRepository extends JpaRepository<AddressBook, Integer> {
 }

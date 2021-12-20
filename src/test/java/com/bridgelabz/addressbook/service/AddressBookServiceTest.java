@@ -2,7 +2,7 @@ package com.bridgelabz.addressbook.service;
 
 import com.bridgelabz.addressbook.builder.AddressBuilder;
 import com.bridgelabz.addressbook.dto.AddressBookDto;
-import com.bridgelabz.addressbook.entity.AddressBookEntity;
+import com.bridgelabz.addressbook.entity.AddressBook;
 import com.bridgelabz.addressbook.exception.AddressBookCustomException;
 import com.bridgelabz.addressbook.repository.AddressBookRepository;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,8 +59,8 @@ public class AddressBookServiceTest {
         addressBookDto2.setZip("123456");
         addressBookDtoList.add(addressBookDto2);
 
-        List<AddressBookEntity> addressBookEntities = new ArrayList<>();
-        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        List<AddressBook> addressBookEntities = new ArrayList<>();
+        AddressBook addressBookEntity = new AddressBook();
         addressBookEntity.setName("Damini");
         addressBookEntity.setAddress("Mahasamund");
         addressBookEntity.setCity("Raipur");
@@ -69,7 +68,7 @@ public class AddressBookServiceTest {
         addressBookEntity.setPhoneNumber("1234567890");
         addressBookEntity.setZip("123456");
         addressBookEntities.add(addressBookEntity);
-        AddressBookEntity addressBookEntity1 = new AddressBookEntity();
+        AddressBook addressBookEntity1 = new AddressBook();
         addressBookEntity1.setName("Siva");
         addressBookEntity1.setAddress("Mahasamund");
         addressBookEntity1.setCity("Raipur");
@@ -97,7 +96,7 @@ public class AddressBookServiceTest {
         addressBookDto.setPhoneNumber("1234567890");
         addressBookDto.setZip("123456");
 
-        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        AddressBook addressBookEntity = new AddressBook();
         addressBookEntity.setId(1);
         addressBookEntity.setName("Damini");
         addressBookEntity.setAddress("Mahasamund");
@@ -105,7 +104,7 @@ public class AddressBookServiceTest {
         addressBookEntity.setState("Chhattishgarh");
         addressBookEntity.setPhoneNumber("1234567890");
         addressBookEntity.setZip("123456");
-        when(modelMapper.map(addressBookDto, AddressBookEntity.class)).thenReturn(addressBookEntity);
+        when(modelMapper.map(addressBookDto, AddressBook.class)).thenReturn(addressBookEntity);
         String actualStringMessage = addressBookService.addAddressBook(addressBookDto);
         assertEquals("AddressBook Added Successfully", actualStringMessage);
         verify(addressBookRepository, times(1)).save(addressBookEntity);
@@ -122,7 +121,7 @@ public class AddressBookServiceTest {
         addressBookDto.setPhoneNumber("1234567890");
         addressBookDto.setZip("123456");
 
-        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        AddressBook addressBookEntity = new AddressBook();
         addressBookEntity.setId(1);
         addressBookEntity.setName("Damini");
         addressBookEntity.setAddress("Mahasamund");
@@ -162,7 +161,7 @@ public class AddressBookServiceTest {
     @Test
     void givenId_whenDeleteAddressBookMethodIsCalledWithAnId_shouldDeleteTheDataOfThatId() {
         int id = 1;
-        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        AddressBook addressBookEntity = new AddressBook();
         addressBookEntity.setId(1);
         addressBookEntity.setName("Damini");
         addressBookEntity.setAddress("Mahasamund");
@@ -180,7 +179,7 @@ public class AddressBookServiceTest {
     @Test
     void givenId_whenDeleteEmployeeMethodIsCalled_IfIdNotFound_shouldThrowExceptionMessage() {
         int id = 1;
-        AddressBookEntity addressBookEntity = new AddressBookEntity();
+        AddressBook addressBookEntity = new AddressBook();
         addressBookEntity.setId(1);
         addressBookEntity.setName("Damini");
         addressBookEntity.setAddress("Mahasamund");

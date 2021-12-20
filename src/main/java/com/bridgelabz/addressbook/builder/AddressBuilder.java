@@ -1,10 +1,9 @@
 package com.bridgelabz.addressbook.builder;
 
 import com.bridgelabz.addressbook.dto.AddressBookDto;
-import com.bridgelabz.addressbook.entity.AddressBookEntity;
+import com.bridgelabz.addressbook.entity.AddressBook;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
@@ -27,7 +26,7 @@ public class AddressBuilder {
      * @param addressBookEntity : addressBook entity which will be overwritten.
      * @return employeePayroll : converted addressBook entity
      */
-    public AddressBookEntity buildAddressEntity(AddressBookDto addressBookDto, AddressBookEntity addressBookEntity) {
+    public AddressBook buildAddressEntity(AddressBookDto addressBookDto, AddressBook addressBookEntity) {
         modelMapper.map(addressBookDto, addressBookEntity);
         return addressBookEntity;
     }

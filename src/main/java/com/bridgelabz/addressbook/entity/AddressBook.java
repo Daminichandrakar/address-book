@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "address_book")
-public class AddressBookEntity {
+public class AddressBook {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -27,8 +27,5 @@ public class AddressBookEntity {
     private String state;
     private String phoneNumber;
     private String zip;
-    @CreationTimestamp
-    private LocalDateTime createdOn;
-    @UpdateTimestamp
-    private LocalDateTime updatedOn;
+
 }

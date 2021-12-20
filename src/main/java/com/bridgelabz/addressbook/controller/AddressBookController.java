@@ -3,6 +3,8 @@ package com.bridgelabz.addressbook.controller;
 import com.bridgelabz.addressbook.dto.AddressBookDto;
 import com.bridgelabz.addressbook.service.AddressBookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,8 +30,8 @@ public class AddressBookController {
      * @return list of all address.
      */
     @GetMapping(value = "/get-all")
-    public List<AddressBookDto> getAll() {
-        return addressBookService.getAll();
+    public ResponseEntity<List<AddressBookDto>> getAll() {
+        return new ResponseEntity<>(addressBookService.getAll(), HttpStatus.OK);
     }
 
     /**
@@ -39,8 +41,8 @@ public class AddressBookController {
      * @return String : success message "AddressBook Added Successfully".
      */
     @PostMapping(value = "/add")
-    public String add(@Valid @RequestBody AddressBookDto addressBookDto) {
-        return addressBookService.addAddressBook(addressBookDto);
+    public ResponseEntity<String> add(@Valid @RequestBody AddressBookDto addressBookDto) {
+        return new ResponseEntity<>(addressBookService.addAddressBook(addressBookDto),HttpStatus.OK);
     }
 
     /**
@@ -50,8 +52,8 @@ public class AddressBookController {
      * @return String : success message "AddressBook Updated Successfully".
      */
     @PutMapping(value = "/update/{id}")
-    public String update(@PathVariable(value = "id") int id, @Valid @RequestBody AddressBookDto addressBookDto) {
-        return addressBookService.updateAddressBook(id, addressBookDto);
+    public ResponseEntity<String> update(@PathVariable(value = "id") int id, @Valid @RequestBody AddressBookDto addressBookDto) {
+        return new ResponseEntity<>(addressBookService.updateAddressBook(id, addressBookDto),HttpStatus.OK);
     }
 
     /**
@@ -61,7 +63,7 @@ public class AddressBookController {
      * @return String : success message "AddressBook Deleted Successfully".
      */
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable int id) {
-        return addressBookService.deleteAddressBook(id);
+    public ResponseEntity<String> delete(@PathVariable int id) {
+        return new ResponseEntity<>(addressBookService.deleteAddressBook(id),HttpStatus.OK);
     }
 }

@@ -2,7 +2,7 @@ package com.bridgelabz.addressbook.service;
 
 import com.bridgelabz.addressbook.builder.AddressBuilder;
 import com.bridgelabz.addressbook.dto.AddressBookDto;
-import com.bridgelabz.addressbook.entity.AddressBookEntity;
+import com.bridgelabz.addressbook.entity.AddressBook;
 import com.bridgelabz.addressbook.exception.AddressBookCustomException;
 import com.bridgelabz.addressbook.repository.AddressBookRepository;
 import org.modelmapper.ModelMapper;
@@ -22,6 +22,8 @@ import java.util.stream.Collectors;
 @Service
 public class AddressBookService {
 
+    @Autowired
+    IAddressBookService iAddressBookService;
     @Autowired
     private AddressBookRepository addressBookRepository;
     @Autowired
@@ -44,7 +46,7 @@ public class AddressBookService {
      * @return String : Success message for adding data into database.
      */
     public String addAddressBook(AddressBookDto addressBookDto) {
-        AddressBookEntity addressBookEntity = modelMapper.map(addressBookDto, AddressBookEntity.class);
+        AddressBook addressBookEntity = modelMapper.map(addressBookDto, AddressBook.class);
         addressBookRepository.save(addressBookEntity);
         return "AddressBook Added Successfully";
     }
@@ -55,8 +57,8 @@ public class AddressBookService {
      * @param id : takes the addressBook id of that particular addressBook entity
      * @return the addressBook entity using the addressBook id
      */
-    public AddressBookEntity getAddressBookById(int id) {
-        AddressBookEntity addressBookEntity = addressBookRepository.findById(id)
+    public AddressBook getAddressBookById(int id) {
+        AddressBook addressBookEntity = addressBookRepository.findById(id)
                 .orElseThrow(() -> new AddressBookCustomException(
                         "Invalid AddressBook Id -> " + id));
         return addressBookEntity;
@@ -72,7 +74,7 @@ public class AddressBookService {
      * @return String : Success message for updating data into database.
      */
     public String updateAddressBook(int id, AddressBookDto addressBookDto) {
-        AddressBookEntity addressBookEntity = getAddressBookById(id);
+        AddressBook addressBookEntity = getAddressBookById(id);
         addressBookEntity = addressBuilder.buildAddressEntity(addressBookDto, addressBookEntity);
         addressBookRepository.save(addressBookEntity);
         return "AddressBook Updated Successfully";
@@ -85,7 +87,7 @@ public class AddressBookService {
      * @return String : Success message for deleting data into database.
      */
     public String deleteAddressBook(int id) {
-        AddressBookEntity addressBookEntity = getAddressBookById(id);
+        AddressBook addressBookEntity = getAddressBookById(id);
         addressBookRepository.delete(addressBookEntity);
         return "AddressBook Deleted Successfully";
     }
